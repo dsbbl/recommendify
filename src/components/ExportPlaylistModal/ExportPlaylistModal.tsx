@@ -19,23 +19,26 @@ const ExportPlaylistModal: React.FC<ExportPlaylistModalProps> = ({show, handleCl
   const onSubmit = async (data: PlaylistForm) => {
     setLoading(true);
     setToast(null);
-
+  
     try {
       const accessToken = localStorage.getItem('spotify_access_token');
       if (!accessToken) throw new Error('User not authenticated with Spotify.');
-
+  
       const playlistData = await createPlaylist(data.playlistName, data.isPublic, accessToken);
       const trackUris = tracks.map((track) => `spotify:track:${track.id}`);
       await addTracksToPlaylist(playlistData.id, trackUris, accessToken);
-
+  
       setToast({message: `Playlist "${data.playlistName}" exported successfully!`, variant: 'success'});
+      handleClose();
     } catch (err: unknown) {
-        if (err instanceof Error) {
-          setToast({message: err.message, variant: 'error'});
-        } else {
-          setToast({message: 'Failed to export playlist.', variant: 'error'});
-        }
+      if (err instanceof Error) {
+        setToast({message: err.message, variant: 'error'});
+      } else {
+        setToast({message: 'Failed to export playlist.', variant: 'error'});
       }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
