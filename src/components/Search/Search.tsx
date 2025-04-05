@@ -33,8 +33,21 @@ export default function Search({onSearch}: SearchProps) {
 
       <input
         type="number"
+        min="1"
+        step="1"
         className={`track-amount-input ${errors.tracksAmount ? 'invalid' : ''}`}
-        placeholder="Number of tracks (1–50)"
+        placeholder="Number of tracks (1–50)"  
+        onKeyDown={(e) => {
+          if (['-', 'e', 'E', '+', '.'].includes(e.key)) {
+            e.preventDefault();
+          }
+        }}
+        onInput={(e) => {
+          const value = (e.target as HTMLInputElement).value;
+          if (value !== '' && parseInt(value) < 1) {
+            (e.target as HTMLInputElement).value = '1';
+          }
+        }}
         {...register('tracksAmount', {
           required: 'Please provide a number of tracks',
           min: {value: 1, message: 'Minimum is 1 track'},
