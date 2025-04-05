@@ -61,7 +61,6 @@ A modal accessible via the floating button shows personalized Spotify stats:
 - Uses `/v1/me/top/artists`
 - Time ranges: `short_term`, `medium_term`, `long_term`
 - Popularity-based **bar chart** for top artists (via **Recharts**)
-- Optional genre distribution chart (disabled if genre data is unavailable)
 
 ---
 
