@@ -1,0 +1,80 @@
+.recommendations {
+    text-align: center;
+    margin-top: 2rem;
+  
+    &__title {
+      margin-bottom: 1.5rem;
+      font-size: 1.75rem;
+      font-weight: bold;
+    }
+  
+    &__card-wrapper {
+      margin-bottom: 1rem;
+    }
+  
+    &__card {
+      background-color: #1e2a38 !important;
+      color: white !important;
+      border-radius: 10px !important;
+      height: 100% !important;
+    }
+  
+    &__image {
+      object-fit: cover;
+      height: 140px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+  
+    &__body {
+      padding: 0.75rem;
+    }
+  
+    &__track-title {
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+  
+    &__artist {
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    &__popularity-label {
+      font-size: 0.75rem;
+      margin-bottom: 0.25rem;
+    }
+  
+    &__progress {
+      height: 0.8rem;
+      font-size: 0.7rem;
+      background-color: #2c3e50;
+    }
+  
+    &__button-wrapper {
+      margin-top: 1rem;
+    }
+  
+    &__button {
+      padding: 10px 20px !important;
+      background-color: #1db954 !important;
+      color: #fff;
+      border: none !important;
+      border-radius: 8px;
+      font-size: 18px !important;
+      font-weight: bold !important;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      margin-bottom: 40px !important;
+  
+      &:hover:not(:disabled) {
+        background-color: #1aa34a !important;
+      }
+  
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+  }
+  

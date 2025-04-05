@@ -1,0 +1,59 @@
+.stats-modal {
+    .modal-content {
+      background-color: #101820;
+      color: white;
+      border-radius: 10px;
+    }
+  
+    .modal-header,
+    .modal-footer {
+      border: none;
+      background-color: #101820;
+      color: white;
+    }
+  
+    .modal-title {
+      font-weight: bold;
+    }
+  
+    .dropdown-wrapper {
+      display: flex;
+      justify-content: end;
+      margin-bottom: 12px;
+    }
+  
+    .chart-title {
+      margin-bottom: 1rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+  
+    .spinner-container {
+      display: flex;
+      justify-content: center;
+      padding: 2rem 0;
+    }
+  
+    .close-stats-button {
+      margin-top: 16px;
+      padding: 12px;
+      background-color: #1db954 !important;
+      color: #fff;
+      border: none !important;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bolder !important;
+      cursor: pointer;
+      transition: background 0.2s ease !important;
+  
+      &:hover:not(:disabled) {
+        background-color: #1aa34a !important;
+      }
+  
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+  }
+  

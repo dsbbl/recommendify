@@ -1,0 +1,47 @@
+.export-modal {
+    .modal-content {
+      background-color: #121212;
+      color: white;
+    }
+  
+    &__header {
+      background-color: #198754;
+      color: white;
+      border-bottom: 1px solid #198754;
+    }
+  
+    &__body {
+      background-color: #121212;
+      color: white;
+    }
+  
+    &__input {
+      background-color: #1e1e1e;
+      color: white;
+      border: 1px solid #333;
+  
+      &::placeholder {
+        color: #aaa;
+      }
+  
+      &.is-invalid {
+        border-color: #dc3545;
+      }
+    }
+  
+    &__checkbox {
+      color: white;
+    }
+
+    .btn-close {
+      filter: invert(1);
+      opacity: 0.8;
+      transition: opacity 0.2s ease;
+  
+      &:hover {
+        opacity: 1;
+        filter: invert(0.3);
+      }
+    }
+    
+  }

@@ -1,0 +1,63 @@
+.stats-button-wrapper {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    z-index: 999;
+    display: inline-block;
+  }
+  
+  .stats-float-button {
+    background-color: #1db954;
+    color: #101820;
+    font-weight: 600;
+    border: none;
+    padding: 5px 20px;
+    border-radius: 25px;
+    box-shadow: 0 0 12px #1db954, 0 0 20px #1db95470;
+    animation: floatWiggle 3s infinite ease-in-out;
+    transition: transform 0.2s ease;
+    position: relative;
+  
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 18px #1ed760;
+      cursor: pointer;
+    }
+  }
+  
+  .green-rays {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    pointer-events: none;
+  
+    .ray {
+      position: absolute;
+      width: 2px;
+      height: 20px;
+      background: #1db954;
+      transform-origin: bottom center;
+      animation: pulse 2s infinite ease-in-out;
+  
+      &.ray-1 { transform: rotate(-60deg) translate(-50%, -50%); left: 15px; top: 0; }
+      &.ray-2 { transform: rotate(-30deg) translate(-50%, -50%); left: 30px; top: 0; }
+      &.ray-3 { transform: rotate(0deg) translate(-50%, -50%); left: 50%; top: -10px; }
+      &.ray-4 { transform: rotate(30deg) translate(-50%, -50%); right: 30px; top: 0; }
+      &.ray-5 { transform: rotate(60deg) translate(-50%, -50%); right: 15px; top: 0; }
+      &.ray-6 { transform: rotate(90deg) translate(-50%, -50%); right: 0px; top: 10px; }
+    }
+  }
+  
+  @keyframes floatWiggle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scaleY(1); }
+    50% { opacity: 0.6; transform: scaleY(1.3); }
+  }
+  
