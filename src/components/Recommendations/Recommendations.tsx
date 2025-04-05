@@ -27,12 +27,16 @@ const Recommendations: React.FC<RecommendationProps> = ({data}) => {
                   {track.artists.map((a) => a.name).join(', ')}
                 </Card.Text>
                 <Card.Text className="recommendations__popularity-label">Popularity</Card.Text>
-                <ProgressBar
-                  now={track.popularity}
-                  label={`${track.popularity}/100`}
-                  variant="success"
-                  className="recommendations__progress"
-                />
+                <div className="recommendations__progress-wrapper">
+                    <div className="recommendations__progress-label">
+                        {track.popularity}/100
+                    </div>
+                    <ProgressBar
+                        now={track.popularity}
+                        variant="success"
+                        className="recommendations__progress"
+                    />
+                    </div>
               </Card.Body>
             </Card>
           </Col>

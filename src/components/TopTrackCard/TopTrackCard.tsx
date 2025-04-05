@@ -21,12 +21,16 @@ const TopTrackCard: React.FC<TopTrackCardProps> = ({track}) => {
               {track.artists.map((artist) => artist.name).join(', ')}
             </Card.Text>
             <Card.Text className="top-track-pop-label">Popularity</Card.Text>
-            <ProgressBar
-              now={track.popularity}
-              label={`${track.popularity}/100`}
-              variant="success"
-              className="top-track-progress"
-            />
+                <div className="recommendations__progress-wrapper">
+                    <div className="recommendations__progress-label">
+                        {track.popularity}/100
+                    </div>
+                    <ProgressBar
+                        now={track.popularity}
+                        variant="success"
+                        className="recommendations__progress"
+                    />
+                    </div>
           </Card.Body>
         </Card>
       </Col>
