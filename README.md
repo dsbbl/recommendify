@@ -1,6 +1,6 @@
 # 🎧 Recommendify
 
-An engineer-level React app that generates **Spotify music recommendations** based on a song you love. Built with **React + TypeScript**, Spotify Web API, and a sleek UI — perfect for exploring music tailored to your taste.
+An engineer thesis React app that generates **Spotify music recommendations** based on a song you love. Built with **React + TypeScript**, Spotify Web API — perfect for exploring music tailored to your taste.
 
 ## 🌟 Features
 
