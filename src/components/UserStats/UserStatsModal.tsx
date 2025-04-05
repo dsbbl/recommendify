@@ -2,6 +2,7 @@ import {Modal, Button, Spinner, Dropdown} from 'react-bootstrap';
 import {BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell} from 'recharts';
 import {useState} from 'react';
 import {useUserStats} from '../../hooks/useUserStats';
+import ObscurityLevel from './ObscurityLevel';
 import type {UserStatsModalProps, TimeRange, SpotifyArtist, ChartArtistData} from '../../types/types';
 import './UserStatsModal.scss';
 
@@ -70,6 +71,7 @@ const UserStatsModal: React.FC<UserStatsModalProps> = ({show, handleClose, token
                 </Bar>
               </BarChart>
             </ResponsiveContainer>
+            <ObscurityLevel topArtists={topArtists} />
           </>
         )}
       </Modal.Body>
