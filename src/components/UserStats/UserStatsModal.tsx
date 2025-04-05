@@ -22,6 +22,8 @@ const UserStatsModal: React.FC<UserStatsModalProps> = ({show, handleClose, token
       popularity: artist.popularity,
       color: '#1DB954',
     })) || [];
+    
+  const isEmpty = !isLoading && (!topArtists || topArtists.length === 0);
 
   return (
     <Modal show={show} onHide={handleClose} centered size="lg" className="stats-modal">
@@ -51,27 +53,36 @@ const UserStatsModal: React.FC<UserStatsModalProps> = ({show, handleClose, token
               </Dropdown>
             </div>
 
-            <h5 className="chart-title">Your Top Artists</h5>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart layout="vertical" data={chartData} margin={{left: 50}}>
-                <XAxis type="number" stroke="#fff" />
-                <YAxis
-                  type="category"
-                  dataKey="name"
-                  stroke="#fff"
-                  width={120}
-                  tick={{fontSize: 12, fill: '#fff'}}
-                  interval={0}
-                />
-                <Tooltip />
-                <Bar dataKey="popularity">
-                  {chartData.map((entry: ChartArtistData, index: number) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
-                  ))}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
-            <ObscurityLevel topArtists={topArtists} />
+            {isEmpty ? (
+              <div className="empty-placeholder mt-4 text-center text-muted">
+                <p>🤷‍♂️ We couldn’t find any top artists for this time range.</p>
+                <p>Try picking a different one or listening to more music 🎶</p>
+              </div>
+            ) : (
+              <>
+                <h5 className="chart-title">Your Top Artists</h5>
+                <ResponsiveContainer width="100%" height={300}>
+                  <BarChart layout="vertical" data={chartData} margin={{left: 50}}>
+                    <XAxis type="number" stroke="#fff" />
+                    <YAxis
+                      type="category"
+                      dataKey="name"
+                      stroke="#fff"
+                      width={120}
+                      tick={{fontSize: 12, fill: '#fff'}}
+                      interval={0}
+                    />
+                    <Tooltip />
+                    <Bar dataKey="popularity">
+                      {chartData.map((entry: ChartArtistData, index: number) => (
+                        <Cell key={`cell-${index}`} fill={entry.color} />
+                      ))}
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+                <ObscurityLevel topArtists={topArtists} />
+              </>
+            )}
           </>
         )}
       </Modal.Body>

@@ -36,7 +36,7 @@ export default function Search({onSearch}: SearchProps) {
         min="1"
         step="1"
         className={`track-amount-input ${errors.tracksAmount ? 'invalid' : ''}`}
-        placeholder="Number of tracks (1–50)"  
+        placeholder="Number of recommendations you want to generate (1–35)"  
         onKeyDown={(e) => {
           if (['-', 'e', 'E', '+', '.'].includes(e.key)) {
             e.preventDefault();
@@ -51,7 +51,7 @@ export default function Search({onSearch}: SearchProps) {
         {...register('tracksAmount', {
           required: 'Please provide a number of tracks',
           min: {value: 1, message: 'Minimum is 1 track'},
-          max: {value: 50, message: 'Maximum is 50 tracks'},
+          max: {value: 35, message: 'Maximum is 35 tracks'},
           valueAsNumber: true,
         })}
       />
