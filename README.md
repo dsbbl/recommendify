@@ -1,54 +1,89 @@
-# React + TypeScript + Vite
+# 🎧 Recommendify
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An engineer-level React app that generates **Spotify music recommendations** based on a song you love. Built with **React + TypeScript**, Spotify Web API, and a sleek UI — perfect for exploring music tailored to your taste.
 
-Currently, two official plugins are available:
+## 🌟 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔗 **Paste a Spotify track URL** to get song-based recommendations
+- 🧠 Uses **Spotify’s recommendation engine** for accuracy
+- 🎯 Displays a **seed song card** and a grid of recommended tracks
+- 📊 "Some Cool Stats" modal showing:
+  - Your top artists (short/medium/long term)
+- 🎵 Create and export a playlist to your **Spotify account**
+- ✅ Playlist visibility toggle (public/private)
+- 🌈 Fully responsive & stylish UI with themed Bootstrap + SCSS
+- ✅ Unit tests & component tests powered by **Vitest**
+- 🚀 Clean modular architecture with best practices (hooks, separation of concerns)
 
-## Expanding the ESLint configuration
+## 🧪 Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| Category        | Tools / Libraries                         |
+|----------------|--------------------------------------------|
+| Frontend       | React, TypeScript                         |
+| Styling        | SCSS (modularized), Bootstrap             |
+| API            | Spotify Web API                           |
+| Testing        | Vitest, React Testing Library             |
+| State & Data   | React Query (@tanstack/react-query)       |
+| Tooling        | Vite, ESLint, React Hook Form             |
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## ⚙️ How It Works
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+This app allows users to generate a personalized playlist based on a song they input, leveraging Spotify’s recommendation engine and user profile data.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 1. 🔐 Authentication with Spotify
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+The app uses **OAuth 2.0 Authorization Code Flow (Implicit Grant)** to authenticate users:
+
+- When the user clicks **"Sign in and connect with Spotify"**, they are redirected to the Spotify login screen with the necessary scopes.
+- After consent, Spotify redirects the user back with an **access token** embedded in the URL.
+- The token is parsed and stored in **`localStorage`**, and passed to all API requests as a Bearer token.
+- Token is validated and used to fetch user profile and top artist data.
+
+---
+
+### 2. 🔎 Track Search and Recommendation Flow
+
+1. The user submits a **Spotify track URL** and selects the number of tracks.
+2. The app extracts the **track ID** using a regular expression.
+3. A call is made to the Spotify `GET /v1/recommendations` endpoint using the seed track.
+4. The app displays recommended tracks with:
+   - Track name
+   - Artist(s)
+   - Album image
+   - Popularity score (visualized with a progress bar)
+
+---
+
+### 3. 📈 "Some Cool Stats" Modal
+
+A modal accessible via the floating button shows personalized Spotify stats:
+
+- Uses `/v1/me/top/artists`
+- Time ranges: `short_term`, `medium_term`, `long_term`
+- Popularity-based **bar chart** for top artists (via **Recharts**)
+- Optional genre distribution chart (disabled if genre data is unavailable)
+
+---
+
+### 4. 💾 Export to Spotify Playlist
+
+Once recommendations are generated:
+
+1. The user clicks **"Add to my playlist!"**
+2. Fills a modal form:
+   - Playlist name
+   - Public/Private toggle
+3. The app sends:
+   - `POST /v1/users/{user_id}/playlists` to create a playlist
+   - `POST /v1/playlists/{playlist_id}/tracks` to add recommended tracks by URI
+4. Displays a toast notification on success or error.
+
+---
+
+
+## 🤖 AI-Assisted Documentation
+
+This README and project documentation were partially generated and refactored using **AI (ChatGPT)** to ensure clarity, consistency, and professionalism in structure and language — while maintaining full technical accuracy.
+
+---
+
