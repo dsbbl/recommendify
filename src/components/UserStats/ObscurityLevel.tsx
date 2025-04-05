@@ -27,7 +27,7 @@ const ObscurityLevel: React.FC<ObscurityLevelProps> = ({topArtists}) => {
     level = '🌀 Balanced Banger Hunter';
     description = 'You vibe with both TikTok hits and that one band with 1k listeners.';
   } else if (avgPopularity <= 80) {
-    level = '💅 Certified Pop Enjoyer';
+    level = '💅 Certified Mainstream Enjoyer';
     description = 'Your playlist is basically a teenager’s gym routine.';
   } else if (avgPopularity <= 94) {
     level = '🍼 Spotify’s Favorite Child';
